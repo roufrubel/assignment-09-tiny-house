@@ -1,0 +1,75 @@
+[
+    {
+      "Img_url": "https://example.com/images/estate1.jpg",
+      "estate_title": "Luxury Villa in Beverly Hills",
+      "_id": 1,
+      "segment_name": "Luxury",
+      "description": "A stunning luxury villa with beautiful interiors and breathtaking views.",
+      "price": 4500000,
+      "Status": "sale",
+      "Area": "4500 sq ft",
+      "location": "Beverly Hills, CA",
+      "facilities": ["living room", "swimming pool", "kitchen", "garden"]
+    },
+    {
+      "Img_url": "https://example.com/images/estate2.jpg",
+      "estate_title": "Cozy Cottage by the Lake",
+      "_id": 2,
+      "segment_name": "Cottage",
+      "description": "A charming cottage perfect for a peaceful getaway by the lake.",
+      "price": 250000,
+      "Status": "sale",
+      "Area": "1200 sq ft",
+      "location": "Lake Tahoe, NV",
+      "facilities": ["living room", "kitchen", "garden"]
+    },
+    {
+      "Img_url": "https://example.com/images/estate3.jpg",
+      "estate_title": "Modern Apartment in the City Center",
+      "_id": 3,
+      "segment_name": "Apartment",
+      "description": "A modern apartment with all the amenities located in the heart of the city.",
+      "price": 1800,
+      "Status": "rent",
+      "Area": "900 sq ft",
+      "location": "New York, NY",
+      "facilities": ["living room", "kitchen"]
+    },
+    {
+      "Img_url": "https://example.com/images/estate4.jpg",
+      "estate_title": "Spacious Family Home",
+      "_id": 4,
+      "segment_name": "Family",
+      "description": "A spacious home with a large garden, perfect for families.",
+      "price": 750000,
+      "Status": "sale",
+      "Area": "3000 sq ft",
+      "location": "Austin, TX",
+      "facilities": ["living room", "kitchen", "garden"]
+    },
+    {
+      "Img_url": "https://example.com/images/estate5.jpg",
+      "estate_title": "Beachfront Condo",
+      "_id": 5,
+      "segment_name": "Condo",
+      "description": "A beautiful condo with direct beach access and stunning ocean views.",
+      "price": 3200,
+      "Status": "rent",
+      "Area": "1100 sq ft",
+      "location": "Miami, FL",
+      "facilities": ["living room", "swimming pool", "kitchen"]
+    },
+    {
+      "Img_url": "https://example.com/images/estate6.jpg",
+      "estate_title": "Rustic Cabin in the Woods",
+      "_id": 6,
+      "segment_name": "Cabin",
+      "description": "A rustic cabin located in the woods, perfect for a serene retreat.",
+      "price": 450000,
+      "Status": "sale",
+      "Area": "1500 sq ft",
+      "location": "Asheville, NC",
+      "facilities": ["living room", "kitchen", "garden"]
+    }
+  ]
+  
