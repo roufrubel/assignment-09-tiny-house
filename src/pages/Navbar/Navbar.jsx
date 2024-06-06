@@ -1,20 +1,23 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import auth from "../../firebase/firebase.config";
 
 
 const Navbar = () => {
     const {user, logOut} = useContext(AuthContext);
+    const currentUser = auth.currentUser;
+    // console.log(user)
   
     const handleSignOut = () => {
       logOut()
       .then()
       .catch()
-    }
+    }  
   
       const navLinks = <>
       <li><NavLink to="/">Home</NavLink></li>           
-      <li><NavLink to="/login">Login</NavLink></li>      
+      <li><NavLink to="/update">Update Profile</NavLink></li>      
       </>
       return (
           <div className="navbar bg-base-100">
@@ -39,14 +42,18 @@ const Navbar = () => {
       </ul>
     </div>
     <div className="navbar-end">
-    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+    
+      {
+         user ?
+        <>
+        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            <img alt="userDefaultPic" src="" />
+            <img alt="Pic" src={user?.photoURL} />
           </div>
         </div>
-      {
-        user ?
+        <p>{user?.displayName}</p>
         <button onClick={handleSignOut} className="btn">Sign Out</button>
+        </>
         :
         <Link to='/login'><button className="btn">Login</button></Link>
       }

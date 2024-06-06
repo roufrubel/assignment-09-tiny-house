@@ -1,5 +1,4 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { IoLogoGoogle } from "react-icons/io5";
@@ -19,14 +18,16 @@ const Login = () => {
           const password = form.get('password');
           signIn(email, password)
           .then(result => {
-            console.log(result.user)
+            console.log(result.user);
             // navigate after login
             navigate(location?.state ? location.state : '/');
           })
           .catch(error => {
-            console.error(error);
+            alert(error.message);
           })
       }
+
+
       return (
           <>
           <div className="w-3/5  mx-auto mt-10">

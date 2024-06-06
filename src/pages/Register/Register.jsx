@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { IoLogoGoogle } from "react-icons/io5";
 
+
 const Register = () => {
     const {createUser, googleSignIn} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
     const handleRegister = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
@@ -18,12 +21,15 @@ const Register = () => {
         // create user
         createUser(email, password)
         .then(result => {
-            console.log(result.user)
+          console.log(result.user);
+          // navigate after register
+          navigate(location?.state ? location.state : '/');
         })
         .catch(error => {
-            console.error(error)
+            alert(error.message)
         })
     }
+
     return (
         <>
         <div className="w-3/5 mx-auto mt-10">
@@ -38,7 +44,9 @@ const Register = () => {
         </form>
         <p>Already have account? <Link to='/login' className="text-blue-700 font-semibold">Login</Link></p>
       </div>
-      <div className="flex justify-center border-t mt-6 pt-6"><button className="btn btn-primary flex items-center " onClick={googleSignIn}><IoLogoGoogle/> Google Sign In</button></div>
+      <div className="flex justify-center border-t mt-6 pt-6"><button className="btn btn-primary flex items-center " onClick={googleSignIn}><IoLogoGoogle/> Google Sign In</button>
+      
+      </div>
         </div>
         </>
     );
