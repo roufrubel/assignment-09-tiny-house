@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { IoLogoGoogle } from "react-icons/io5";
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,7 +10,7 @@ import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
-
+  const [loginError, setLoginError] = useState('')  
     const {signIn, googleSignIn} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
@@ -33,6 +33,20 @@ const Login = () => {
           const form = new FormData(e.currentTarget);
           const email = form.get('email');
           const password = form.get('password');
+
+          if(password.length > 6) {
+            setLoginError('Password must be at least 6 characters long.')
+            return;
+          }
+          else if(!/[A-Z]/.test(password)) {
+            setLoginError('Password must be at least one Uppercase character.')
+            return;
+          }
+          else if(!/[a-z]/.test(password)) {
+            setLoginError('Password must be at least one Lowercase character.')
+            return;
+          }
+
           signIn(email, password)
           .then(result => {
             toast('You have logged in Successfully !');
@@ -52,6 +66,9 @@ const Login = () => {
           <Helmet>
                 <title>Login | Tiny House</title>
             </Helmet>
+            {
+              loginError && toast(loginError)
+            }
           <div className="w-3/5  mx-auto mt-10">
               <div className="bg-slate-100 p-6">
                   <h4 className="text-center">Please Login</h4>

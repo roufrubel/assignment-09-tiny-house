@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { IoLogoGoogle } from "react-icons/io5";
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,7 +11,9 @@ import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
-    const {createUser, googleSignIn} = useContext(AuthContext);
+
+  const [registerError, setRegisterError] = useState('')  
+  const {createUser, googleSignIn} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -35,6 +37,18 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         // console.log(name, photo, email, password);
+        if(password.length > 6) {
+          setRegisterError('Password must be at least 6 characters long.')
+          return;
+        }
+        else if(!/[A-Z]/.test(password)) {
+          setRegisterError('Password must be at least one Uppercase character.')
+          return;
+        }
+        else if(!/[a-z]/.test(password)) {
+          setRegisterError('Password must be at least one Lowercase character.')
+          return;
+        }
 
         // create user
         createUser(email, password)
@@ -60,6 +74,9 @@ const Register = () => {
         <Helmet>
                 <title>Register | Tiny House</title>
             </Helmet>
+            {
+              registerError && toast(registerError)
+            }
         <div className="w-3/5 mx-auto mt-10">
             <div className="bg-slate-100 p-6">
              <h4 className="text-center">Please Register</h4>
