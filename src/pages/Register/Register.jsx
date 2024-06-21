@@ -2,6 +2,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { IoLogoGoogle } from "react-icons/io5";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
@@ -11,19 +14,32 @@ const Register = () => {
 
     const handleRegister = e => {
         e.preventDefault();
-        const form = new FormData(e.currentTarget);
-        const name = form.get('name')
-        const photo = form.get('photo')
-        const email = form.get('email')
-        const password = form.get('password')
-        console.log(name, photo, email, password);
+        const form = e.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        // console.log(name, photo, email, password);
 
         // create user
         createUser(email, password)
         .then(result => {
+          toast('You have registered successfully!');
           console.log(result.user);
-          // navigate after register
+          const user = result.user;          
+         if(user){         
+          updateProfile(user, {
+            displayName: name,
+            photoURL: photo,
+          }).then(() => {
+            // navigate after register
           navigate(location?.state ? location.state : '/');
+          }).catch((error) => {
+            toast('Ops!', error);
+          });
+
+         
+         }
         })
         .catch(error => {
             alert(error.message)
@@ -41,12 +57,15 @@ const Register = () => {
           <input className="w-full"  type="email" name="email" placeholder="your email" id="" /><br /><br/>
           <input className="w-full" type="password" name="password" placeholder="your password" id="" /> <br /><br/>
           <input  className="w-full bg-blue-200 font-semibold cursor-pointer" type="submit" value="Submit" />
+          <ToastContainer />
         </form>
         <p>Already have account? <Link to='/login' className="text-blue-700 font-semibold">Login</Link></p>
       </div>
       <div className="flex justify-center border-t mt-6 pt-6"><button className="btn btn-primary flex items-center " onClick={googleSignIn}><IoLogoGoogle/> Google Sign In</button>
+     
       
       </div>
+      
         </div>
         </>
     );

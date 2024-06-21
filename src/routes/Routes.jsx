@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register";
 import House from "../pages/Home/House";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
+import Update from "../Update/Update";
 
 const Routes = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const Routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>,
+            },
+            {
+                path: '/update',
+                element: <Update></Update>,
             },
         ]
 },

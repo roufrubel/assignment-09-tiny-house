@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import auth from "../../firebase/firebase.config";
+import './Navbar.css';
 
 
 const Navbar = () => {
@@ -32,7 +33,7 @@ const Navbar = () => {
           }
         </ul>
       </div>
-      <a className="btn btn-ghost text-xl font-bold">Tiny House</a>
+      <a className="btn btn-ghost text-xl font-bold">TINY HOUSE</a>
     </div>
     <div className="navbar-center hidden lg:flex">
       <ul className="menu menu-horizontal px-1">
@@ -46,12 +47,12 @@ const Navbar = () => {
       {
          user ?
         <>
-        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-          <div className="w-10 rounded-full">
-            <img alt="Pic" src={user?.photoURL} />
+        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar image-container">
+          <div className="w-10 rounded-full ">
+            <img   alt="Pic" src={user?.photoURL} />
+            <div className="tooltip">{user?.displayName}</div>
           </div>
         </div>
-        <p>{user?.displayName}</p>
         <button onClick={handleSignOut} className="btn">Sign Out</button>
         </>
         :
