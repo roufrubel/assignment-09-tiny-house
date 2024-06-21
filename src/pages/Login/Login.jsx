@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GoogleAuthProvider } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
@@ -48,6 +49,9 @@ const Login = () => {
 
       return (
           <>
+          <Helmet>
+                <title>Login | Tiny House</title>
+            </Helmet>
           <div className="w-3/5  mx-auto mt-10">
               <div className="bg-slate-100 p-6">
                   <h4 className="text-center">Please Login</h4>

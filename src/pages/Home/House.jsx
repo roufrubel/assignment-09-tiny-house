@@ -1,5 +1,6 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import Banner from "./Banner";
+import { Helmet } from "react-helmet-async";
 
 
 const House = () => {
@@ -12,6 +13,9 @@ const House = () => {
     const {Img_url, estate_title, segment_name, description, price, Status, Area, location, facilities} = singleHouse;
     return (
         <div>
+             <Helmet>
+                <title>View Details | Tiny House</title> 
+             </Helmet>
             <Banner></Banner>
             <div  className="p-6 grid grid-cols-1 mt-10 mb-4 bg-green-50 rounded-md border border-green-600">
                 

@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Update = () => {
     const {user} = useContext(AuthContext);
@@ -35,6 +36,9 @@ const Update = () => {
 
     return (
         <div>
+          <Helmet>
+                <title>Update Profile | Tiny House</title>
+            </Helmet>
           <div className="w-3/5 mx-auto mt-20 mb-32">
             <div className="bg-slate-100 p-6">
              <h4 className="text-center">Please Update Your Profile</h4>
