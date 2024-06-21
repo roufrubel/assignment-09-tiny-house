@@ -34,9 +34,9 @@ const Login = () => {
           const password = form.get('password');
           signIn(email, password)
           .then(result => {
+            toast('You have logged in Successfully !');
             // navigate after login
            if(result.user.email){            
-           toast('You have logged in Successfully !');
             navigate(location?.state ? location.state : '/');
            }
           })

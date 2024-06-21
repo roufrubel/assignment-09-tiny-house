@@ -13,18 +13,19 @@ const House = () => {
     return (
         <div>
             <Banner></Banner>
-            <div  className="p-6 grid grid-cols-1 mt-10">
+            <div  className="p-6 grid grid-cols-1 mt-10 mb-4 bg-green-50 rounded-md border border-green-600">
                 
                 <div className="mb-6">
                 <img className="w-4/6 mx-auto" src={Img_url} alt="house" />
                 </div>              
-  <div>
-    <h2 className="card-title">{estate_title}</h2>
-    <div className="flex items-center justify-center">
+  <div className="flex justify-center">
+  <div className="space-y-3">
+    <h2 className="font-bold text-2xl text-green-700">{estate_title}</h2>
+    <div className="flex items-center justify-start font-bold">
         <p>Segment: {segment_name}</p>
         <p>Status: {Status}</p>
     </div>
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-start font-bold">
         <p>Area: {Area}</p>
         <p>Location: {location}</p>
     </div>
@@ -32,15 +33,16 @@ const House = () => {
     <p className="font-bold">Facilities: </p>
    <div className=""> 
    {
-        facilities?.map((facility, idx) => <p className="mr-2" key={idx}>{facility}</p>)
+        facilities?.map((facility, idx) => <p className="mr-2 font-bold text-blue-700" key={idx}>{facility}</p>)
     }
     </div>
    </div>
-    <p>Price: $ {price}</p>
-    <p>{description}</p>
-    <div className="card-actions justify-end mt-4">
-      <Link to='/'><button className="btn btn-primary">See All Property</button></Link>
+    <p className="font-bold text-2xl text-orange-700">Price: $ {price}</p>
+    <p className="font-bold">{description}</p>
+    <div className=" justify-center mt-4">
+      <Link to='/'><button className="btn btn-neutral">See All Property</button></Link>
     </div>
+  </div>
   </div>
         </div>
         </div>
