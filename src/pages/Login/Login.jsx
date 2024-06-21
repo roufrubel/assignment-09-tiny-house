@@ -7,10 +7,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { GoogleAuthProvider } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
 import { Helmet } from "react-helmet-async";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
 
 
 const Login = () => {
   const [loginError, setLoginError] = useState('')  
+  const [view, setView] = useState(false)  
     const {signIn, googleSignIn} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
@@ -34,7 +37,7 @@ const Login = () => {
           const email = form.get('email');
           const password = form.get('password');
 
-          if(password.length > 6) {
+          if(password.length < 6) {
             setLoginError('Password must be at least 6 characters long.')
             return;
           }
@@ -49,9 +52,11 @@ const Login = () => {
 
           signIn(email, password)
           .then(result => {
-            toast('You have logged in Successfully !');
+            if(result.user){
+              toast('You have logged in Successfully !');   
+            }
             // navigate after login
-           if(result.user.email){            
+           if(result.user.email){         
             navigate(location?.state ? location.state : '/');
            }
           })
@@ -74,7 +79,11 @@ const Login = () => {
                   <h4 className="text-center">Please Login</h4>
           <form onSubmit={handleLogin}>
             <input className="w-full"  type="email" name="email" placeholder="your email" id="" /><br /><br/>
-            <input className="w-full" type="password" name="password" placeholder="your password" id="" /> <br /><br/>
+            <input className="w-full" 
+            type={view? "text" : "password" }
+             name="password" placeholder="your password" id="" />
+             <span className="flex justify-end -mt-5 mr-2" onClick={() => setView(!view)}>{view ? <FaEye/> : <FaEyeSlash/>}</span>
+              <br /><br/>
             <input className="w-full bg-blue-200 font-semibold cursor-pointer" type="submit" value="Submit" />
           </form>
           <p className="mt-6">Do not have account? <Link to='/register' className="text-blue-700 font-semibold">Register</Link></p>
