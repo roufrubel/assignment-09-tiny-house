@@ -22,7 +22,7 @@ const Login = () => {
         // navigate after register
         navigate(location?.state ? location.state : '/');
      }).catch((error) => {
-       toast('Ops!', error);
+       toast(error.message);
      }); 
     }
   
@@ -41,7 +41,7 @@ const Login = () => {
            }
           })
           .catch(error => {
-            alert(error.message);
+            toast(error.message);
           })
       }
 

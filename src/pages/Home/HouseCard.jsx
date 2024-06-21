@@ -27,7 +27,7 @@ const HouseCard = ({house}) => {
     }
     </div>
    </div>
-    <p className="font-bold text-2xl text-cyan-600">Price: $ {price}</p>
+    <p className="font-bold text-xl text-cyan-800">Price: $ {price}</p>
     <div className="flex justify-end mt-4">
       <Link to={`/house/${_id}`}><button className="btn btn-neutral">View Property</button></Link>
 
