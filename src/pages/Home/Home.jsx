@@ -10,7 +10,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="mt-16">
             {
                 houses.map(house => <HouseCard key={house.id} house={house}></HouseCard>)
             }

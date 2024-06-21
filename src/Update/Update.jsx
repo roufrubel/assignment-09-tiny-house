@@ -35,7 +35,7 @@ const Update = () => {
 
     return (
         <div>
-          <div className="w-3/5 mx-auto mt-12 mb-12">
+          <div className="w-3/5 mx-auto mt-20 mb-32">
             <div className="bg-slate-100 p-6">
              <h4 className="text-center">Please Update Your Profile</h4>
         <form onSubmit={handleUpdateProfile}>

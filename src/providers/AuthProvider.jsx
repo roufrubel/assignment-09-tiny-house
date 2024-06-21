@@ -12,18 +12,13 @@ const AuthProvider = ({children}) => {
     const googleProvider = new GoogleAuthProvider();
 
     const googleSignIn = () =>{
-        signInWithPopup(auth, googleProvider);
+        return signInWithPopup(auth, googleProvider);
     }
 
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
-
-    // const updateUserProfile = () => {
-    //   return  updateProfile(auth.currentUser, {
-    //       })
-    // }
 
     const signIn = (email, password) => {
         setLoading(true);

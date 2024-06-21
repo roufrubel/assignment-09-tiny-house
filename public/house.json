@@ -1,6 +1,6 @@
 [
     {
-      "Img_url": "https://example.com/images/estate1.jpg",
+      "Img_url": "https://i.ibb.co/rmTkGJG/1.png",
       "estate_title": "Luxury Villa in Beverly Hills",
       "_id": 1,
       "segment_name": "Luxury",
@@ -12,7 +12,7 @@
       "facilities": ["living room", "swimming pool", "kitchen", "garden"]
     },
     {
-      "Img_url": "https://example.com/images/estate2.jpg",
+      "Img_url": "https://i.ibb.co/0VYGZPH/2.png",
       "estate_title": "Cozy Cottage by the Lake",
       "_id": 2,
       "segment_name": "Cottage",
@@ -24,7 +24,7 @@
       "facilities": ["living room", "kitchen", "garden"]
     },
     {
-      "Img_url": "https://example.com/images/estate3.jpg",
+      "Img_url": "https://i.ibb.co/LRhFpC2/3.png",
       "estate_title": "Modern Apartment in the City Center",
       "_id": 3,
       "segment_name": "Apartment",
@@ -36,7 +36,7 @@
       "facilities": ["living room", "kitchen"]
     },
     {
-      "Img_url": "https://example.com/images/estate4.jpg",
+      "Img_url": "https://i.ibb.co/sqjxTtG/4.png",
       "estate_title": "Spacious Family Home",
       "_id": 4,
       "segment_name": "Family",
@@ -48,7 +48,7 @@
       "facilities": ["living room", "kitchen", "garden"]
     },
     {
-      "Img_url": "https://example.com/images/estate5.jpg",
+      "Img_url": "https://i.ibb.co/hmzjpkZ/5.png",
       "estate_title": "Beachfront Condo",
       "_id": 5,
       "segment_name": "Condo",
@@ -60,7 +60,7 @@
       "facilities": ["living room", "swimming pool", "kitchen"]
     },
     {
-      "Img_url": "https://example.com/images/estate6.jpg",
+      "Img_url": "https://i.ibb.co/qgF6MB1/6.png",
       "estate_title": "Rustic Cabin in the Woods",
       "_id": 6,
       "segment_name": "Cabin",

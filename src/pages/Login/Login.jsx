@@ -4,6 +4,8 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { IoLogoGoogle } from "react-icons/io5";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GoogleAuthProvider } from "firebase/auth";
+import auth from "../../firebase/firebase.config";
 
 
 const Login = () => {
@@ -11,6 +13,18 @@ const Login = () => {
     const {signIn, googleSignIn} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleSignIn = ( ) => {
+      googleSignIn (auth, googleProvider)
+      .then(() => {
+        // navigate after register
+        navigate(location?.state ? location.state : '/');
+     }).catch((error) => {
+       toast('Ops!', error);
+     }); 
+    }
   
       const handleLogin = e => {
           e.preventDefault();
@@ -20,7 +34,7 @@ const Login = () => {
           const password = form.get('password');
           signIn(email, password)
           .then(result => {
-                       // navigate after login
+            // navigate after login
            if(result.user.email){            
            toast('You have logged in Successfully !');
             navigate(location?.state ? location.state : '/');
@@ -45,7 +59,7 @@ const Login = () => {
           <p className="mt-6">Do not have account? <Link to='/register' className="text-blue-700 font-semibold">Register</Link></p>
         </div>
         
-        <div className="flex justify-center border-t mt-6 pt-6 mb-16"><button className="btn btn-primary flex items-center " onClick={googleSignIn}><IoLogoGoogle/> Google Sign In</button></div>
+        <div className="flex justify-center border-t mt-6 pt-6 mb-28"><button className="btn btn-primary flex items-center " onClick={handleGoogleSignIn}><IoLogoGoogle/> Google Sign In</button></div>
         <ToastContainer />
           </div>
           </>

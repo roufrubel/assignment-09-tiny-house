@@ -4,13 +4,27 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { IoLogoGoogle } from "react-icons/io5";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { updateProfile } from "firebase/auth";
+import { updateProfile } from "firebase/auth"
+import { GoogleAuthProvider } from "firebase/auth";
+import auth from "../../firebase/firebase.config";
 
 
 const Register = () => {
     const {createUser, googleSignIn} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleSignIn = ( ) => {
+      googleSignIn (auth, googleProvider)
+      .then(() => {
+        // navigate after register
+        navigate(location?.state ? location.state : '/');
+     }).catch((error) => {
+       toast('Ops!', error);
+     }); 
+    }
 
     const handleRegister = e => {
         e.preventDefault();
@@ -25,24 +39,18 @@ const Register = () => {
         createUser(email, password)
         .then(result => {
           toast('You have registered successfully!');
-          console.log(result.user);
           const user = result.user;          
          if(user){         
           updateProfile(user, {
             displayName: name,
             photoURL: photo,
           }).then(() => {
-            // navigate after register
-          navigate(location?.state ? location.state : '/');
+             // navigate after register
+             navigate(location?.state ? location.state : '/');
           }).catch((error) => {
             toast('Ops!', error);
-          });
-
-         
+          });         
          }
-        })
-        .catch(error => {
-            alert(error.message)
         })
     }
 
@@ -59,9 +67,9 @@ const Register = () => {
           <input  className="w-full bg-blue-200 font-semibold cursor-pointer" type="submit" value="Submit" />
           <ToastContainer />
         </form>
-        <p>Already have account? <Link to='/login' className="text-blue-700 font-semibold">Login</Link></p>
+        <p className="mt-6">Already have account? <Link to='/login' className="text-blue-700 font-semibold">Login</Link></p>
       </div>
-      <div className="flex justify-center border-t mt-6 pt-6"><button className="btn btn-primary flex items-center " onClick={googleSignIn}><IoLogoGoogle/> Google Sign In</button>
+      <div className="flex justify-center border-t mt-6 pt-6 mb-12"><button className="btn btn-primary flex items-center " onClick={handleGoogleSignIn}><IoLogoGoogle/> Google Sign In</button>
      
       
       </div>

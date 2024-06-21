@@ -5,10 +5,12 @@ const HouseCard = ({house}) => {
     const {_id, Img_url, estate_title, segment_name, description, price, Status, Area, location, facilities} = house;
     
     return (
-           <div className="card card-compact bg-base-100 border">
-  <figure><img src={Img_url} alt="house" /></figure>
-  <div className="card-body">
-    <h2 className="card-title">{estate_title}</h2>
+           <div className="border flex justify-between items-center gap-4 mb-8">
+  <div className="">
+  <img src={Img_url} alt="house" />
+  </div>
+  <div className="p-4">
+    <h2 >{estate_title}</h2>
     <div className="flex items-center justify-around">
         <p>Segment: {segment_name}</p>
         <p>Status: {Status}</p>
@@ -27,8 +29,8 @@ const HouseCard = ({house}) => {
    </div>
     <p>Price: $ {price}</p>
     <p>{description}</p>
-    <div className="card-actions justify-end">
-      <Link to={`/house/${_id}`}><button className="btn btn-primary">View Property</button></Link>
+    <div className="flex justify-end mt-4">
+      <Link to={`/house/${_id}`}><button className="btn btn-neutral">View Property</button></Link>
 
     </div>
   </div>
