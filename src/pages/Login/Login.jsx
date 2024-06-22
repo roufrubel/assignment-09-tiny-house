@@ -4,21 +4,23 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { IoLogoGoogle } from "react-icons/io5";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
 import { Helmet } from "react-helmet-async";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
 
 
 const Login = () => {
   const [loginError, setLoginError] = useState('')  
   const [view, setView] = useState(false)  
-    const {signIn, googleSignIn, loading} = useContext(AuthContext);
+    const {signIn, googleSignIn, gitHubSignIn, loading} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
     const googleProvider = new GoogleAuthProvider();
+    const gitHubProvider = new GithubAuthProvider();
 
     if(loading){
       return <span className="loading loading-spinner loading-lg text-center"></span>
@@ -31,6 +33,16 @@ const Login = () => {
         navigate(location?.state ? location.state : '/');
      }).catch((error) => {
        toast(error.message);
+     }); 
+    }
+
+    const handleGitHubSignIn = ( ) => {
+      gitHubSignIn (auth, gitHubProvider)
+      .then(() => {
+        // navigate after register
+        navigate(location?.state ? location.state : '/');
+     }).catch((error) => {
+       toast('Ops!', error);
      }); 
     }
   
@@ -93,7 +105,9 @@ const Login = () => {
           <p className="mt-6">Do not have account? <Link to='/register' className="text-blue-700 font-semibold">Register</Link></p>
         </div>
         
-        <div className="flex justify-center border-t mt-6 pt-6 mb-28"><button className="btn btn-primary flex items-center " onClick={handleGoogleSignIn}><IoLogoGoogle/> Google Sign In</button></div>
+        <div className="flex justify-center border-t mt-6 pt-6 mb-1"><button className="btn btn-primary flex items-center " onClick={handleGoogleSignIn}><IoLogoGoogle/> Google Sign In</button></div>
+        <div className="flex justify-center mt-1 pt-6 mb-6"><button className="btn btn-primary flex items-center " onClick={handleGitHubSignIn}><FaGithub/> GitHub Sign In</button>  
+      </div>
         <ToastContainer />
           </div>
           </>
