@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyALbEJIOS69rHIgCAO89V0iIQ5M2u1Euos",
-  authDomain: "assignment-09-tiny-house.firebaseapp.com",
-  projectId: "assignment-09-tiny-house",
-  storageBucket: "assignment-09-tiny-house.appspot.com",
-  messagingSenderId: "13363893432",
-  appId: "1:13363893432:web:552a2e9f44829ad3e1d04d"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 // Initialize Firebase
