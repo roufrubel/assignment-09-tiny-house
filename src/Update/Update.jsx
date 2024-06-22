@@ -39,15 +39,15 @@ const Update = () => {
           <Helmet>
                 <title>Update Profile | Tiny House</title>
             </Helmet>
-          <div className="w-3/5 mx-auto mt-20 mb-32">
-            <div className="bg-slate-100 p-6">
+          <div className="w-3/5 mx-auto mt-14 mb-14">
+            <div className="bg-slate-100 p-10 rounded-md">
              <h4 className="text-center">Please Update Your Profile</h4>
         <form onSubmit={handleUpdateProfile}>
-          <input className="w-full" type="text" name="name" defaultValue={user.displayName} placeholder="your name" id="" /><br /><br/>
-          <input className="w-full" type="text" name="photo" defaultValue={user.photoURL} placeholder="your photo" id="" /><br /><br/>
-          <input className="w-full"  type="email" name="email" defaultValue={user.email} placeholder="your email" id="" /><br /><br/>
-          <input className="w-full" type="password" defaultValue={user.password} name="password" placeholder="your password" id="" /> <br /><br/>
-          <input  className="w-full bg-blue-200 font-semibold cursor-pointer" type="submit" value="Submit" />
+          <input className="w-full p-2 rounded-md" type="text" name="name" defaultValue={user.displayName} placeholder="your name" id="" /><br /><br/>
+          <input className="w-full p-2 rounded-md" type="text" name="photo" defaultValue={user.photoURL} placeholder="your photo" id="" /><br /><br/>
+          <input className="w-full p-2 rounded-md"  type="email" name="email" defaultValue={user.email} placeholder="your email" id="" /><br /><br/>
+          <input className="w-full p-2 rounded-md" type="password" defaultValue={user.password} name="password" placeholder="your password" id="" /> <br /><br/>
+          <input  className="p-1 w-full bg-blue-500 text-white rounded-md font-bold cursor-pointer" type="submit" value="Update" />
           <ToastContainer />
         </form>
       </div>
