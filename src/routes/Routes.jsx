@@ -34,7 +34,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/update',
-                element: <Update></Update>,
+                element: <PrivateRoute><Update></Update></PrivateRoute>
             },
         ]
 },

@@ -14,11 +14,15 @@ import { FaEyeSlash } from "react-icons/fa6";
 const Login = () => {
   const [loginError, setLoginError] = useState('')  
   const [view, setView] = useState(false)  
-    const {signIn, googleSignIn} = useContext(AuthContext);
+    const {signIn, googleSignIn, loading} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
     const googleProvider = new GoogleAuthProvider();
+
+    if(loading){
+      return <span className="loading loading-spinner loading-lg text-center"></span>
+    }
 
     const handleGoogleSignIn = ( ) => {
       googleSignIn (auth, googleProvider)
