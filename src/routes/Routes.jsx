@@ -7,6 +7,7 @@ import House from "../pages/Home/House";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import Update from "../Update/Update";
+import Reviews from "../Reviews/Reviews";
 
 const Routes = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const Routes = createBrowserRouter([
             {
                 path: '/update',
                 element: <PrivateRoute><Update></Update></PrivateRoute>
+            },
+            {
+                path: '/review',
+                element: <PrivateRoute><Reviews></Reviews></PrivateRoute>
             },
         ]
 },

@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import auth from "../../firebase/firebase.config";
 import './Navbar.css';
+import { FaHome } from "react-icons/fa";
 
 
 const Navbar = () => {
@@ -18,7 +19,8 @@ const Navbar = () => {
   
       const navLinks = <>
       <li><NavLink to="/">Home</NavLink></li>           
-      <li><NavLink to="/update">Update Profile</NavLink></li>      
+      <li className="mr-2 ml-2"><NavLink to="/update">Update Profile</NavLink></li>      
+      <li><NavLink to="/review">Reviews</NavLink></li>      
       </>
       return (
           <div className="navbar bg-base-100">
@@ -33,7 +35,7 @@ const Navbar = () => {
           }
         </ul>
       </div>
-      <a className="btn btn-ghost text-xl font-bold">TINY HOUSE</a>
+      <a className="btn btn-ghost text-xl font-extrabold flex items-center"><span className="mr-1 text-2xl"><FaHome/></span>TINY HOUSE</a>
     </div>
     <div className="navbar-center hidden lg:flex">
       <ul className="menu menu-horizontal px-1">

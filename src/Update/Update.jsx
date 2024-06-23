@@ -39,7 +39,7 @@ const Update = () => {
           <Helmet>
                 <title>Update Profile | Tiny House</title>
             </Helmet>
-          <div className="w-3/5 mx-auto mt-14 mb-14">
+          <div className="w-full md:w-3/5 lg:w-3/5 mx-auto mt-14 mb-14">
             <div className="bg-slate-100 p-10 rounded-md">
              <h4 className="text-center">Please Update Your Profile</h4>
         <form onSubmit={handleUpdateProfile}>
